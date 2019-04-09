@@ -1,0 +1,66 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+  <h1 class="text-center">Questionário Social</h1>
+   
+<h2> <i class="fa fa-plus-circle"></i> Cadastrar Pessoa:</h2>
+<form #cadastro="ngForm" (submit)="salvar()">
+<div class="form -group">
+  <label for="nome">Nome:</label>
+  <input type="text" name="nome" [(ngModel)]="nome" class="form-control" required><br />
+</div> 
+
+<div class="form -group">  
+  <label for = "sexo">Sexo:</label>
+  <select name="sexo" [(ngModel)]="sexo" class="form-control" id="sexo">
+      <option name="Masculino" value = "Masculino">Masculino</option>
+      <option name="Feminino" value = "Feminino">Feminino</option>
+    </select>
+</div><br />
+
+<div class="form -group"> 
+  <label for = "idade">Idade:</label>
+  <input type="number" name="idade" [(ngModel)]="idade" class="form-control" required><br />
+</div> 
+
+<div class="form -group">  
+    <label for = "cidade">Cidade:</label>
+    <select name="cidade" [(ngModel)]="cidade" class="form-control" id="cidade">
+        <option value>Selecionar cidade</option>
+        <option [value]="cidade" name="cidade" *ngFor="let cidade of cidades">
+          {{cidade}}
+        </option>
+      </select>
+  </div><br />
+   
+  <button type="submit" class="btn btn-primary" [disabled]="!cadastro.valid" >salvar</button>
+</form>
+</div>
+<h1 class="text-center">Resultado de estatísticas</h1>
+
+<h2>
+  Pessoa mais velha:
+</h2>
+<p>  {{
+  pessoa.pessoMaisVelhaPessoaMaisNova().velho
+  }}</p>
+  <h2>
+    Pessoa mais nova:
+  </h2>
+<p>
+  {{
+    pessoa.pessoMaisVelhaPessoaMaisNova().novo
+  }}
+</p>
+<h2>
+  Média idade Homens:
+</h2>
+<p>
+  {{pessoa.mediaMulherHomen().mediaHomem}}
+</p>
+<h2>
+  Média idade Mulheres:
+</h2>
+<p>
+  {{pessoa.mediaMulherHomen().mediaMulher}}
+</p>
